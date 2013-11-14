@@ -1735,7 +1735,7 @@
     <Content Include="Views\Machine\EditMachine.cshtml" />
     <Content Include="Views\Machine\InsertMachine.cshtml" />
     <Content Include="themes\job\log\manage.less" />
-    <None Include="themes\job\RefreshCountDown.less" />
+    <Content Include="themes\job\RefreshCountDown.less" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.Maintenance.Controller\Fanex.Maintenance.Controller.csproj">
