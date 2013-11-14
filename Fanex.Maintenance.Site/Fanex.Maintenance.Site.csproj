@@ -240,29 +240,10 @@
     <Content Include="Global.asax" />
     <Content Include="images\calendar.gif" />
     <Content Include="images\sprite_v.png" />
-    <Content Include="scripts\Connection\Alias.js" />
-    <Content Include="scripts\Connection\Connection.js" />
-    <Content Include="scripts\Connection\ChangeConnection.js" />
-    <Content Include="scripts\Connection\Log.js" />
-    <Content Include="scripts\Connection\DatabaseSever.js" />
-    <Content Include="scripts\Connection\Site.js" />
-    <Content Include="scripts\Connection\CreateAlias.js" />
-    <Content Include="scripts\Job\ServerDetail.js" />
-    <Content Include="scripts\Job\ServerManagement.js" />
-    <Content Include="scripts\Job\LeftMenuPage.js" />
-    <Content Include="scripts\Job\Index.js" />
     <Content Include="scripts\lib\custom-datepicker.js" />
     <Content Include="scripts\lib\jquery.blockUI.js" />
     <Content Include="scripts\lib\jquery.qtip-1.0.0-rc3.min.js" />
     <Content Include="scripts\lib\jquery.signalR-1.0.0-rc1.min.js" />
-    <Content Include="scripts\NotificationHub.js" />
-    <Content Include="scripts\DatabaseReport\Chart.js" />
-    <Content Include="scripts\DatabaseReport\Licenseedata.js" />
-    <Content Include="scripts\DatabaseReport\RefreshTime.js" />
-    <Content Include="scripts\Job\SqlServerLogManagement.js" />
-    <Content Include="scripts\Job\ScheduleManagement.js" />
-    <Content Include="scripts\Job\JobLogManagement.js" />
-    <Content Include="scripts\Job\JobManagementPage.js" />
     <Content Include="scripts\lib\chosen\chosen-sprite.png" />
     <Content Include="scripts\lib\chosen\chosen.css" />
     <Content Include="scripts\lib\chosen\chosen.jquery.js" />
@@ -1384,7 +1365,6 @@
     <Content Include="scripts\Plugin\Select2\select2.css" />
     <Content Include="scripts\Plugin\Select2\select2.js" />
     <Content Include="scripts\Plugin\Select2\select2.png" />
-    <Content Include="scripts\SqlJobManagement\LeftMenuPage.js" />
     <Content Include="scripts\_Layout.js" />
     <Content Include="themes\assets\css\font-awesome-ie7.css" />
     <Content Include="themes\assets\css\font-awesome.css" />
@@ -1556,10 +1536,7 @@
     <Content Include="themes\jquery-ui\smoothness\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="themes\jquery-ui\smoothness\jquery-ui-1.8.23.css" />
     <Content Include="themes\jquery-ui\smoothness\jquery-ui-1.8.23.min.css" />
-    <Content Include="themes\report\CreditStyle.css" />
-    <Content Include="themes\report\LicenseedataStyle.css" />
     <Content Include="themes\reset.css" />
-    <Content Include="themes\SqlJobManagement\MainContentPage.css" />
     <Content Include="themes\style.css" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
@@ -1727,7 +1704,6 @@
     <Content Include="WebConnectionString.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="themes\connectionstring\alias\createalias.less" />
     <Content Include="Views\CommonError\Error.cshtml" />
     <Content Include="Views\CommonError\NotFound.cshtml" />
     <Content Include="Views\Mail\GetError.cshtml" />
