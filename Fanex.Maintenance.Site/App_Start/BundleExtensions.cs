@@ -38,8 +38,8 @@ namespace Fanex.Maintenance.Site.App_Start
         /// Relatives from absolute path.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <param name="path">The path.</param>
-        /// <returns></returns>
+        /// <param name="path">The absolute path.</param>
+        /// <returns>The relative path.</returns>
         public static string RelativeFromAbsolutePath(this HttpContextBase context, string path)
         {
             var request = context.Request;

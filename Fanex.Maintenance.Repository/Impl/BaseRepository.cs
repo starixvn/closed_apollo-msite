@@ -44,7 +44,6 @@ namespace Fanex.Maintenance.Repository.Impl
             }
         }
 
-
         /// <summary>
         /// Fetch item.
         /// </summary>
