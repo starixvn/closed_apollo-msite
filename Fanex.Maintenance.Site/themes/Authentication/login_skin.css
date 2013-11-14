@@ -1,0 +1,85 @@
+body {
+	font-family:arial,tahoma,verdana,helvetica,sans-serif;
+	font-size:11px;
+	margin:0px;
+}
+#header{
+	width:100%;
+	background:url(_images/bgHeader.jpg) repeat-x left;
+	height:117px;
+}
+#logo{
+	width:526px;
+	background:url(_images/logo.jpg) no-repeat left;
+	height:117px;
+}
+#mainLogin{
+	margin:0 auto;
+	margin-top:110px;
+	width:564px;
+	height:257px;
+	background:url(_images/bgLogin.jpg) no-repeat left;
+	text-align:left;
+}
+
+.lgRp{
+	float:right;
+	height:220px;
+	width:350px;
+	margin-right:20px;
+}
+.logo{
+	background:url(_images/Logo.jpg) no-repeat;
+	height:53px;
+	width:100%;
+}
+.war_box{
+	width:315px;
+	height:auto;
+	margin-top:50px;
+}
+div.comment {
+	color:#F00;
+	font-weight:bold;
+	padding:7px 5px 7px 45px;
+	border:1px solid #ffabab;
+	background:url(_images/icAlert.png) no-repeat 10px #f1f1f1;
+}
+.form_log{
+	height:192px;
+	padding-top:10px;
+}
+
+.log_text{
+	color:#155d95;
+	font-weight:bold;
+	padding-left:20px;
+	line-height:35px;
+}
+
+.btLg{
+	text-decoration:none;
+	background:url(_images/bgButton.jpg) repeat-x;
+	padding: 2px 20px 3px 10px ;
+	border:#666 1px solid;
+	font-weight:bold;
+	color:#fff;	
+}
+
+.btLg:hover{	
+	color:#6FF;
+}
+
+.icUser{
+	background:url(_images/icUser.jpg) no-repeat center;
+	width:29px;
+	height:50px;
+}
+.icPass{
+	background:url(_images/icPass.jpg) no-repeat center;
+	width:29px;
+	height:50px;
+}
+.war_box {
+    width: 280px;
+}

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+    <Function Name="Log">
+        <Setting Key="Logging_Category_SelAll" SpName="ReadLog_AppLog_GetAllCategory" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_Sel_Padding" SpName="ReadLog_AppLog_GetLog" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_Del" SpName="RemoveLog_AppLog_Log" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_Monitor" SpName="UpdateLog_AppLog_MonitorLog" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_Machine_SelectAll" SpName="ReadLog_AppLog_GetAllMachine" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_Machine_ByType" SpName="ReadLog_AppLog_GetMachineByType" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_Machine_ById" SpName="ReadLog_AppLog_GetMachineByID" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_InsertMachine" SpName="WriteLog_AppLog_Category" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+        <Setting Key="Logging_UpdateMachine" SpName="UpdateLog_AppLog_Machine" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"/>
+    </Function>
+</Functions>
