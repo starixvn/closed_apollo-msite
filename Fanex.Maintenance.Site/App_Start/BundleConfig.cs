@@ -19,7 +19,7 @@ namespace Fanex.Maintenance.Site.App_Start
     {
         /// <summary>
         /// Register bundles.
-        /// For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725.
+        /// For more information on Bundling, visit <see cref="http://go.microsoft.com/fwlink/?LinkId=254725"/> .
         /// </summary>
         /// <param name="bundles">Bundle collection.</param>
         [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]

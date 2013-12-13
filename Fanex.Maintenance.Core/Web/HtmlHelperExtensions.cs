@@ -38,7 +38,7 @@ namespace Fanex.Maintenance.Core.Web
         }
 
         /// <summary>
-        /// Convert the Date value and combine with time(int) value to specific format for showing on view.
+        /// Convert the Date value and combine with time value to specific format for showing on view.
         /// </summary>
         /// <param name="value">DateTime value.</param>
         /// <param name="time">Time value.</param>
@@ -129,56 +129,5 @@ namespace Fanex.Maintenance.Core.Web
         }
 
         #endregion DateTime
-
-        #region Execution Status
-
-        /// <summary>
-        /// Paste Execute Type to Html String.
-        /// </summary>
-        /// <param name="value">Execution status.</param>
-        /// <returns>HTML string.</returns>
-        public static IHtmlString ToExecutionString(this int value)
-        {
-            string htmlValue = string.Empty;
-
-            switch (value)
-            {
-                case (int)ExecutionStatus.BetweenRtries:
-                    htmlValue = string.Format("<span class='BetweenRtries'>{0}</span>", "BetweenRtries");
-                    break;
-
-                case (int)ExecutionStatus.Executing:
-                    htmlValue = string.Format("<span class='Executing'>{0}</span>", "Executing");
-                    break;
-
-                case (int)ExecutionStatus.Idle:
-                    htmlValue = string.Format("<span class='Idle'>{0}</span>", "Idle");
-                    break;
-
-                case (int)ExecutionStatus.Obsolete:
-                    htmlValue = string.Format("<span class='Obsolete'>{0}</span>", "Obsolete");
-                    break;
-
-                case (int)ExecutionStatus.PerformingCompletionActions:
-                    htmlValue = string.Format("<span class='PerformingCompletionActions'>{0}</span>", "Performing Completion Actions");
-                    break;
-
-                case (int)ExecutionStatus.Suspended:
-                    htmlValue = string.Format("<span class='Suspended'>{0}</span>", "Suspended");
-                    break;
-
-                case (int)ExecutionStatus.WaitingFoThread:
-                    htmlValue = string.Format("<span class='WaitingFoThread'>{0}</span>", "Waiting For Thread");
-                    break;
-
-                default:
-                    htmlValue = value.ToString();
-                    break;
-            }
-
-            return new HtmlString(htmlValue);
-        }
-
-        #endregion Execution Status
     }
 }

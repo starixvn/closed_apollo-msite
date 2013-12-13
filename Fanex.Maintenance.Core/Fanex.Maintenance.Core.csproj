@@ -82,7 +82,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SiteFunctionKeys.cs</LastGenOutput>
     </None>
-    <Compile Include="Web\Constants.cs" />
     <Compile Include="Web\HtmlHelperExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
