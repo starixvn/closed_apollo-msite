@@ -53,11 +53,10 @@ namespace Fanex.Maintenance.Core.Helper
         /// <returns>DateTime value.</returns>
         public static DateTime GetFullDate(string dateString)
         {
-            DateTime fullDate = dateString.Length == 8 ? DateTime.ParseExact(
-                dateString,
-                "yyyyMMdd",
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None) : DateTime.MinValue;
+            DateTime fullDate = 
+                dateString.Length == 8 
+                ? DateTime.ParseExact(dateString, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None) 
+                : DateTime.MinValue;
 
             return fullDate;
         }

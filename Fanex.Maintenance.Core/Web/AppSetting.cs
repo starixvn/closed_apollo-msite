@@ -42,31 +42,30 @@ namespace Fanex.Maintenance.Core.Web
 
         static AppSetting()
         {
-            try
-            {
-                _isVirtualDir = ConfigurationManager.AppSettings["isVirtualDirectory"];
-                _notifiServer = Converter.ToBool(ConfigurationManager.AppSettings["isNotifiServer"].ToString());
-                _notifiJob = Converter.ToBool(ConfigurationManager.AppSettings["isNotifiJob"].ToString());
-                _minute = Converter.ToInt(ConfigurationManager.AppSettings["Minute"]);
-                _getDataNotifyInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetDataNotifyInterval"]) * 1000;
-                _getServerResourcesInfoInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetServerResourcesInfoInterval"]) * 1000;
-                _getCpuUtilizationInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetCpuUtilizationInterval"]) * 1000;
-                _getMemoryUtilizationInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetMemoryUtilizationInterval"]) * 1000;
-            }
-            catch (Exception ex)
-            {
-                Logger.Log.Error(ex.ToString(), ex);
-            }
+            _isVirtualDir = ConfigurationManager.AppSettings["isVirtualDirectory"];
+            _notifiServer = Converter.ToBool(ConfigurationManager.AppSettings["isNotifiServer"].ToString());
+            _notifiJob = Converter.ToBool(ConfigurationManager.AppSettings["isNotifiJob"].ToString());
+            _minute = Converter.ToInt(ConfigurationManager.AppSettings["Minute"]);
+            _getDataNotifyInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetDataNotifyInterval"]) * 1000;
+            _getServerResourcesInfoInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetServerResourcesInfoInterval"]) * 1000;
+            _getCpuUtilizationInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetCpuUtilizationInterval"]) * 1000;
+            _getMemoryUtilizationInterval = Converter.To<long>(ConfigurationManager.AppSettings["GetMemoryUtilizationInterval"]) * 1000;
         }
 
         public static long GetCpuUtilizationInterval
         {
-            get { return AppSetting._getCpuUtilizationInterval; }
+            get 
+            { 
+                return AppSetting._getCpuUtilizationInterval; 
+            }
         }
 
         public static long GetMemoryUtilizationInterval
         {
-            get { return AppSetting._getMemoryUtilizationInterval; }
+            get 
+            { 
+                return AppSetting._getMemoryUtilizationInterval; 
+            }
         }
 
         public static bool IsVirtualDirectory
@@ -119,12 +118,18 @@ namespace Fanex.Maintenance.Core.Web
 
         public static bool NotifiJob
         {
-            get { return _notifiJob; }
+            get 
+            { 
+                return _notifiJob; 
+            }
         }
 
         public static bool NotifiServer
         {
-            get { return _notifiServer; }
+            get 
+            { 
+                return _notifiServer; 
+            }
         }
     }
 }

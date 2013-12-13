@@ -55,7 +55,7 @@ namespace Fanex.Maintenance.Repository.Impl
         /// <returns>Log message.</returns>
         public string GetLogMessage(long logId)
         {
-            using (ObjectDb db = new ObjectDb("Logging_SelMessage"))
+            using (var db = new ObjectDb("Logging_SelMessage"))
             {
                 return db.ExecuteScalar(new { logid = logId }).ToString();
             }
@@ -70,7 +70,7 @@ namespace Fanex.Maintenance.Repository.Impl
         {
             int row = 0;
 
-            using (ObjectDb db = new ObjectDb("Logging_Del"))
+            using (var db = new ObjectDb("Logging_Del"))
             {
                 row = db.ExecuteNonQuery(new { from = from });
             }
@@ -89,7 +89,7 @@ namespace Fanex.Maintenance.Repository.Impl
         {
             int row = 0;
 
-            using (ObjectDb db = new ObjectDb("Logging_Monitor"))
+            using (var db = new ObjectDb("Logging_Monitor"))
             {
                 row = db.ExecuteNonQuery(new { LogIds = logIds, @MonitoringUserId = monitoringUserId, IsMonitored = isMonitored });
             }

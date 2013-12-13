@@ -222,6 +222,7 @@ namespace Fanex.Maintenance.Controller
         private void InitMachineTypes()
         {
             List<SelectListItem> machineTypes = new List<SelectListItem>();
+
             machineTypes.Add(new SelectListItem
             {
                 Text = ViewResource.All,
@@ -247,6 +248,7 @@ namespace Fanex.Maintenance.Controller
         private void InitLogStatus()
         {
             List<SelectListItem> logStatus = new List<SelectListItem>();
+
             logStatus.Add(new SelectListItem
             {
                 Text = ViewResource.All,
@@ -273,6 +275,7 @@ namespace Fanex.Maintenance.Controller
         {
             ////Init Serverity
             List<SelectListItem> list = new List<SelectListItem>();
+
             list.Add(new SelectListItem
             {
                 Text = ViewResource.All,

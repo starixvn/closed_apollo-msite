@@ -9,7 +9,6 @@
 
 namespace Fanex.Maintenance.Repository.Impl
 {
-    using System;
     using System.Collections;
     using System.Collections.Generic;
     using Fanex.Data;

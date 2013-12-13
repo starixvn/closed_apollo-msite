@@ -101,9 +101,7 @@ namespace Fanex.Maintenance.Controller
         public ActionResult MailList(string from, string to, int applicationID = 0, int mailStatus = 0, int size = 10)
         {
             InitPageSize();
-
             InitDataMailConfig();
-
             InitMailStatus();
 
             var totalRows = 0;
@@ -111,7 +109,7 @@ namespace Fanex.Maintenance.Controller
             DateTime dateFrom = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             DateTime dateTo = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            List<MailRecord> listMail = new List<MailRecord>();
+            var listMail = new List<MailRecord>();
             listMail = this._mailServer.WithApp(applicationID)
                 .FromDate(dateFrom.ToString())
                 .ToDate(dateTo.ToString())
@@ -136,7 +134,7 @@ namespace Fanex.Maintenance.Controller
         [HttpGet]
         public ActionResult MailSetting()
         {
-            List<MailSetting> listMailSetting = new List<MailSetting>();
+            var listMailSetting = new List<MailSetting>();
             listMailSetting = this._mailServer.GetListSetting();
             return View(listMailSetting);
         }
@@ -164,8 +162,8 @@ namespace Fanex.Maintenance.Controller
             {
                 model.Password = model.Password == null ? string.Empty : model.Password;
                 model.SettingName = model.Server + ":" + model.Port + " (" + model.Username + ")";
-                MailSetting mailSetting = new MailSetting();
-                mailSetting = model.GetMailSetting();
+
+                MailSetting mailSetting = model.GetMailSetting();
                 ViewBag.Success = this._mailServer.StoreSetting(mailSetting);
             }
 
@@ -190,9 +188,8 @@ namespace Fanex.Maintenance.Controller
         [HttpGet]
         public ActionResult EditMailSetting(int id)
         {
-            MailSetting mailSetting = new MailSetting();
-            mailSetting = _mailServer.GetSetting(id);
-            MailSettingViewModel model = new MailSettingViewModel(mailSetting);
+            MailSetting mailSetting = _mailServer.GetSetting(id);
+            var model = new MailSettingViewModel(mailSetting);
 
             return View(model);
         }
@@ -206,12 +203,12 @@ namespace Fanex.Maintenance.Controller
         public ActionResult EditMailSetting(MailSettingViewModel model)
         {
             ViewBag.Success = false;
+
             if (ModelState.IsValid)
             {
                 model.Password = model.Password == null ? string.Empty : model.Password;
                 model.SettingName = model.Server + ":" + model.Port + " (" + model.Username + ")";
-                MailSetting mailSetting = new MailSetting();
-                mailSetting = model.GetMailSetting();
+                MailSetting mailSetting = model.GetMailSetting();
                 ViewBag.Success = _mailServer.StoreSetting(mailSetting);
             }
 
@@ -235,8 +232,7 @@ namespace Fanex.Maintenance.Controller
             string serverIp = mailSetting != null ? mailSetting.Server : string.Empty;
             InitDataIpServer(serverIp);
 
-            List<MailConfig> listMailConfig = new List<MailConfig>();
-            listMailConfig = _mailServer.GetListConfig(serverIp);
+            List<MailConfig> listMailConfig = _mailServer.GetListConfig(serverIp);
 
             var policy = _userService.GetUserSiteFunctionKeyPolicy(this.CurrentSession.UserId, this.SiteId, SiteFunctionKeys.ApplicationManagement);
             ViewBag.Policy = policy;
@@ -255,8 +251,7 @@ namespace Fanex.Maintenance.Controller
         {
             InitDataIpServer(serverIp);
 
-            List<MailConfig> listMailConfig = new List<MailConfig>();
-            listMailConfig = this._mailServer.GetListConfig(serverIp);
+            List<MailConfig> listMailConfig = this._mailServer.GetListConfig(serverIp);
 
             var policy = _userService.GetUserSiteFunctionKeyPolicy(this.CurrentSession.UserId, this.SiteId, SiteFunctionKeys.ApplicationManagement);
             ViewBag.Policy = policy;
@@ -292,8 +287,8 @@ namespace Fanex.Maintenance.Controller
 
             if (ModelState.IsValid)
             {
-                MailConfig mailConfig = new MailConfig();
-                mailConfig = model.GetMailConfig();
+                MailConfig mailConfig = model.GetMailConfig();
+
                 ViewBag.Success = this._mailServer.StoreConfig(mailConfig);
             }
 
@@ -325,9 +320,9 @@ namespace Fanex.Maintenance.Controller
 
             ViewBag.Success = false;
 
-            MailConfig mailConfig = new MailConfig();
-            mailConfig = _mailServer.GetConfig(id);
-            MailConfigViewModel model = new MailConfigViewModel(mailConfig);
+            MailConfig mailConfig = _mailServer.GetConfig(id);
+            var model = new MailConfigViewModel(mailConfig);
+
             return View(model);
         }
 
@@ -346,8 +341,8 @@ namespace Fanex.Maintenance.Controller
 
             if (ModelState.IsValid)
             {
-                MailConfig mailConfig = new MailConfig();
-                mailConfig = model.GetMailConfig();
+                MailConfig mailConfig = model.GetMailConfig();
+
                 ViewBag.Success = _mailServer.StoreConfig(mailConfig);
             }
 
@@ -365,8 +360,7 @@ namespace Fanex.Maintenance.Controller
         [HttpGet]
         public ActionResult MailFunction()
         {
-            List<MailFunction> listMailFunction = new List<MailFunction>();
-            listMailFunction = _mailServer.GetListFunction();
+            List<MailFunction> listMailFunction = _mailServer.GetListFunction();
 
             return View(listMailFunction);
         }
@@ -379,7 +373,6 @@ namespace Fanex.Maintenance.Controller
         public ActionResult AddMailFunction()
         {
             InitDataMailSetting();
-
             InitDataMailConfig();
 
             return View(new MailFunctionViewModel());
@@ -394,15 +387,14 @@ namespace Fanex.Maintenance.Controller
         public ActionResult AddMailFunction(MailFunctionViewModel model)
         {
             InitDataMailSetting();
-
             InitDataMailConfig();
 
             ViewBag.Success = false;
 
             if (ModelState.IsValid)
             {
-                MailFunction mailFunction = new MailFunction();
-                mailFunction = model.GetMailFunction();
+                MailFunction mailFunction = model.GetMailFunction();
+
                 ViewBag.Success = _mailServer.StoreFunction(mailFunction);
             }
 
@@ -418,13 +410,10 @@ namespace Fanex.Maintenance.Controller
         public ActionResult EditMailFunction(int id)
         {
             InitDataMailSetting();
-
             InitDataMailConfig();
 
-            MailFunction mailFunction = new MailFunction();
-            mailFunction = _mailServer.GetFunction(id);
-
-            MailFunctionViewModel model = new MailFunctionViewModel(mailFunction);
+            MailFunction mailFunction = _mailServer.GetFunction(id);
+            var model = new MailFunctionViewModel(mailFunction);
 
             return View(model);
         }
@@ -438,15 +427,14 @@ namespace Fanex.Maintenance.Controller
         public ActionResult EditMailFunction(MailFunctionViewModel model)
         {
             InitDataMailSetting();
-
             InitDataMailConfig();
 
             ViewBag.Success = false;
 
             if (ModelState.IsValid)
             {
-                MailFunction mailFunction = new MailFunction();
-                mailFunction = model.GetMailFunction();
+                MailFunction mailFunction = model.GetMailFunction();
+
                 ViewBag.Success = _mailServer.StoreFunction(mailFunction);
             }
 
@@ -478,7 +466,7 @@ namespace Fanex.Maintenance.Controller
         {
             if (Request.IsAjaxRequest())
             {
-                MailSetting mail = new MailSetting
+                var mail = new MailSetting
                 {
                     SettingName = server + ":" + port.ToString() + " (" + username + ") ",
                     Server = server,
@@ -505,7 +493,7 @@ namespace Fanex.Maintenance.Controller
         [HttpPost]
         public ActionResult AddMailConfigPopUp(string appName, string description, int settingId)
         {
-            MailConfig mailConfig = new MailConfig
+            var mailConfig = new MailConfig
             {
                 AppName = appName,
                 Description = description,
@@ -635,8 +623,7 @@ namespace Fanex.Maintenance.Controller
         {
             if (Request.IsAjaxRequest())
             {
-                List<MailSetting> listMailSetting = new List<MailSetting>();
-                listMailSetting = _mailServer.GetListSetting();
+                List<MailSetting> listMailSetting = _mailServer.GetListSetting();
 
                 return Json(listMailSetting);
             }
@@ -653,8 +640,7 @@ namespace Fanex.Maintenance.Controller
         {
             if (Request.IsAjaxRequest())
             {
-                List<MailConfig> listMailConfig = new List<MailConfig>();
-                listMailConfig = _mailServer.GetListConfig();
+                List<MailConfig> listMailConfig = _mailServer.GetListConfig();
 
                 return Json(listMailConfig);
             }
@@ -662,6 +648,7 @@ namespace Fanex.Maintenance.Controller
             return Json(null);
         }
         #endregion
+
         #region InitData
 
         /// <summary>
@@ -703,6 +690,7 @@ namespace Fanex.Maintenance.Controller
         private void InitMailStatus()
         {
             List<SelectListItem> listMailStatus = new List<SelectListItem>();
+
             listMailStatus.Add(new SelectListItem
             {
                 Text = MailStatus.All.ToString(),
@@ -730,8 +718,7 @@ namespace Fanex.Maintenance.Controller
         /// <param name="appId">Application ID.</param>
         private void InitDataMailConfig(int appId = 0)
         {
-            List<MailConfig> listConfig = new List<MailConfig>();
-            listConfig = _mailServer.GetListConfig(string.Empty);
+            List<MailConfig> listConfig = _mailServer.GetListConfig(string.Empty);
 
             ViewBag.ListMailConfig = listConfig.Select(c => new SelectListItem
             {
@@ -746,8 +733,8 @@ namespace Fanex.Maintenance.Controller
         /// </summary>
         private void InitDataMailSetting()
         {
-            List<MailSetting> listMailSetting = new List<MailSetting>();
-            listMailSetting = _mailServer.GetListSetting();
+            List<MailSetting> listMailSetting = _mailServer.GetListSetting();
+
             ViewBag.ListMailSetting = listMailSetting.Select(s => new SelectListItem
             {
                 Text = s.SettingName,
@@ -761,8 +748,8 @@ namespace Fanex.Maintenance.Controller
         /// <param name="serverIp">Server IP address.</param>
         private void InitDataIpServer(string serverIp = "")
         {
-            List<MailSetting> listMailSetting = new List<MailSetting>();
-            listMailSetting = _mailServer.GetListSetting();
+            List<MailSetting> listMailSetting = _mailServer.GetListSetting();
+
             listMailSetting = listMailSetting.GroupBy(s => s.Server).Select(s => s.First()).ToList();
 
             ViewBag.ListServerIp = listMailSetting.Select(s => new SelectListItem

@@ -57,6 +57,7 @@ namespace Fanex.Maintenance.Controller
         public ActionResult Index(bool? machineType = null)
         {
             var machines = _machineService.GetByType(machineType);
+
             ViewBag.Machines = machines;
             ViewBag.MachineType = machineType;
             InitMachineTypes();
@@ -166,6 +167,7 @@ namespace Fanex.Maintenance.Controller
         private void InitMachineTypes()
         {
             List<SelectListItem> machineTypes = new List<SelectListItem>();
+
             machineTypes.Add(new SelectListItem
             {
                 Text = ViewResource.All,
