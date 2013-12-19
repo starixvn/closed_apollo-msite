@@ -16,20 +16,17 @@ namespace Fanex.Maintenance.Site
     using System.Web.Routing;
     using Fanex.Logging;
     using Fanex.Maintenance.Site.App_Start;
-    using Microsoft.AspNet.SignalR;
 
     /// <summary>
     /// Note: For instructions on enabling IIS6 or IIS7 classic mode, visit http://go.microsoft.com/?LinkId=9394801 .
     /// </summary>   
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         /// <summary>
         /// Application start.
         /// </summary>
         protected void Application_Start()
         {
-            RouteTable.Routes.MapHubs();
-
             AreaRegistration.RegisterAllAreas();
 
             ////WebApiConfig.Register(GlobalConfiguration.Configuration);

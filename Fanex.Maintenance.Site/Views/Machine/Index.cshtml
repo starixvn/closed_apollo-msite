@@ -20,6 +20,11 @@
                 @Html.Label(ViewResource.MachineType)
             </div>
             <div class="edit-field">
+				<select id="MachineType" class="valid" name="MachineType">
+					<option value="null">@ViewResource.All</option>
+					<option value="true">@ViewResource.MachineType_Production</option>
+					<option value="false">@ViewResource.MachineType_UAT</option>
+				</select>
                 @Html.DropDownList("MachineType", (List<SelectListItem>)ViewBag.MachineTypes)
             </div>
             <div class="submit">
@@ -57,7 +62,7 @@
                 foreach (Machine machine in machineList)
                 {
                     string row_class = i % 2 == 0 ? "alt" : string.Empty;
-					
+
             <tr class="@row_class">
                 <td class="align-center">@i
                 </td>

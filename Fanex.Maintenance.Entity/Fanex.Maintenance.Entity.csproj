@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fanex.ConnectionString, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\_Dependencies\Others\Fanex.ConnectionString.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.MailDeliver.MailClient">
-      <HintPath>..\_Dependencies\MailService\Fanex.MailDeliver.MailClient.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.NAP.Framework">
       <HintPath>..\_Dependencies\Others\Fanex.NAP.Framework.dll</HintPath>
     </Reference>
@@ -57,12 +51,6 @@
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Fanex.Maintenance.Core\Fanex.Maintenance.Core.csproj">
-      <Project>{60BC3FA8-DF7C-4024-B469-4ED110420143}</Project>
-      <Name>Fanex.Maintenance.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

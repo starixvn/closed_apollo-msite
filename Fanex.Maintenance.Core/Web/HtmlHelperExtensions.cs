@@ -100,32 +100,24 @@ namespace Fanex.Maintenance.Core.Web
             string dateFormat = "MMM dd, yyyy",
             string timeFormat = "HH:mm")
         {
-            try
+            //// check format time correct HHmmss
+            string strTime = time.ToString();
+            if (strTime.Length < 6)
             {
-                //// check format time correct HHmmss
-                string strTime = time.ToString();
-                if (strTime.Length < 6)
+                int count = 6 - strTime.Length;
+                for (int i = 0; i < count; i++)
                 {
-                    int count = 6 - strTime.Length;
-                    for (int i = 0; i < count; i++)
-                    {
-                        strTime = strTime.Insert(0, "0");
-                    }
+                    strTime = strTime.Insert(0, "0");
                 }
-
-                DateTime date = DateTime.ParseExact(
-                    value.ToString() + " " + strTime,
-                    "yyyyMMdd HHmmss",
-                    CultureInfo.InvariantCulture,
-                    DateTimeStyles.None);
-
-                return new HtmlString(date.ToString(dateFormat) + " - " + date.ToString("HH:mm").Replace(':', 'h') + "'");
             }
-            catch (Exception ex)
-            {
-                Logging.Logger.Log.Error(ex.Message);
-                return new HtmlString(value.ToString());
-            }
+
+            DateTime date = DateTime.ParseExact(
+                value.ToString() + " " + strTime,
+                "yyyyMMdd HHmmss",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None);
+
+            return new HtmlString(date.ToString(dateFormat) + " - " + date.ToString("HH:mm").Replace(':', 'h') + "'");
         }
 
         #endregion DateTime

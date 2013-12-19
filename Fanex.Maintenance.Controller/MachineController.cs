@@ -13,7 +13,6 @@ namespace Fanex.Maintenance.Controller
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Fanex.Maintenance.Core;
     using Fanex.Maintenance.Criteria.Log;
     using Fanex.Maintenance.Entity.Model;
     using Fanex.Maintenance.Service.Impl;
@@ -58,9 +57,8 @@ namespace Fanex.Maintenance.Controller
         {
             var machines = _machineService.GetByType(machineType);
 
-            ViewBag.Machines = machines;
+            ViewBag.Machines = _machineService.GetByType(machineType);
             ViewBag.MachineType = machineType;
-            InitMachineTypes();
 
             return View(machines);
         }
@@ -158,35 +156,5 @@ namespace Fanex.Maintenance.Controller
         }
 
         #endregion Ajax
-
-        #region Private
-
-        /// <summary>
-        /// Initialize Machine Types data.
-        /// </summary>
-        private void InitMachineTypes()
-        {
-            List<SelectListItem> machineTypes = new List<SelectListItem>();
-
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.All,
-                Value = "null"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_Production,
-                Value = "true"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_UAT,
-                Value = "false"
-            });
-
-            ViewBag.MachineTypes = machineTypes;
-        }
-
-        #endregion Private
     }
 }

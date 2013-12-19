@@ -73,7 +73,7 @@ namespace Fanex.Maintenance.Controller
 
             ViewBag.ListLog = null;
 
-            GetLogCriteria criteria = new GetLogCriteria
+            var criteria = new GetLogCriteria
             {
                 CategoryId = 0,
                 MachineId = 0,

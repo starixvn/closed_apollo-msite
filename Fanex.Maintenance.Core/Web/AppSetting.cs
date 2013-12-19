@@ -9,12 +9,10 @@
 
 namespace Fanex.Maintenance.Core.Web
 {
-    using System;
     using System.Configuration;
     using System.Globalization;
     using System.Web;
     using Fanex.Common;
-    using Fanex.Logging;
 
     /// <summary>
     /// App setting.

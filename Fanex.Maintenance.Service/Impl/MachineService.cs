@@ -40,7 +40,7 @@ namespace Fanex.Maintenance.Service.Impl
         /// <returns>List of machine.</returns>
         public IEnumerable<Machine> GetAll()
         {
-            GetAllMachinesCriteria criteria = new GetAllMachinesCriteria();
+            var criteria = new GetAllMachinesCriteria();
 
             return _machineRepository.Fetch(criteria);
         }
@@ -52,7 +52,7 @@ namespace Fanex.Maintenance.Service.Impl
         /// <returns>List of machine.</returns>
         public IEnumerable<Machine> GetByType(bool? machineType)
         {
-            GetMachinesByTypeCriteria criteria = new GetMachinesByTypeCriteria
+            var criteria = new GetMachinesByTypeCriteria
             {
                 MachineType = machineType
             };
@@ -67,7 +67,7 @@ namespace Fanex.Maintenance.Service.Impl
         /// <returns>Machine object.</returns>
         public Machine GetMachine(int id)
         {
-            GetMachineByIdCriteria criteria = new GetMachineByIdCriteria
+            var criteria = new GetMachineByIdCriteria
             {
                 MachineId = id
             };
@@ -84,7 +84,7 @@ namespace Fanex.Maintenance.Service.Impl
         /// <returns>Command result.</returns>
         public CommandResult InsertMachine(string machineName, bool machineType, short timeZone)
         {
-            InsertMachineCriteria criteria = new InsertMachineCriteria
+            var criteria = new InsertMachineCriteria
             {
                 MachineName = machineName,
                 IsProduction = machineType,
@@ -103,7 +103,7 @@ namespace Fanex.Maintenance.Service.Impl
         /// <returns>Command result.</returns>
         public CommandResult UpdateMachine(int machineId, bool machineType, short timeZone)
         {
-            UpdateMachineCriteria criteria = new UpdateMachineCriteria
+            var criteria = new UpdateMachineCriteria
             {
                 MachineId = machineId,
                 IsProduction = machineType,
