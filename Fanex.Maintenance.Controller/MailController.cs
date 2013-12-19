@@ -70,15 +70,13 @@ namespace Fanex.Maintenance.Controller
         {
             InitPageSize();
             InitDataMailConfig(appId);
-            InitMailStatus();
 
             var totalRows = 0;
 
             ViewBag.DateFrom = DateTime.Now.ToString("dd/MM/yyyy");
             ViewBag.DateTo = DateTime.Now.ToString("dd/MM/yyyy");
 
-            List<MailRecord> listMail = new List<MailRecord>();
-            listMail = this._mailServer.WithApp(appId)
+            List<MailRecord> listMail = this._mailServer.WithApp(appId)
                 .FromDate(DateTime.Now.ToShortDateString())
                 .ToDate(DateTime.Now.ToShortDateString())
                 .WithStatus(0)
@@ -102,15 +100,13 @@ namespace Fanex.Maintenance.Controller
         {
             InitPageSize();
             InitDataMailConfig();
-            InitMailStatus();
 
             var totalRows = 0;
 
             DateTime dateFrom = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             DateTime dateTo = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            var listMail = new List<MailRecord>();
-            listMail = this._mailServer.WithApp(applicationID)
+            List<MailRecord> listMail = this._mailServer.WithApp(applicationID)
                 .FromDate(dateFrom.ToString())
                 .ToDate(dateTo.ToString())
                 .WithStatus(mailStatus)
@@ -134,8 +130,7 @@ namespace Fanex.Maintenance.Controller
         [HttpGet]
         public ActionResult MailSetting()
         {
-            var listMailSetting = new List<MailSetting>();
-            listMailSetting = this._mailServer.GetListSetting();
+            List<MailSetting> listMailSetting = this._mailServer.GetListSetting();
             return View(listMailSetting);
         }
 
@@ -228,14 +223,13 @@ namespace Fanex.Maintenance.Controller
         [NapAuth(FunctionKey = SiteFunctionKeys.ApplicationManagement, Policy = Constant.Policy.Read)]
         public ActionResult MailConfig(int id = 0)
         {
-            var mailSetting = _mailServer.GetSetting(id);
+            MailSetting mailSetting = _mailServer.GetSetting(id);
             string serverIp = mailSetting != null ? mailSetting.Server : string.Empty;
             InitDataIpServer(serverIp);
 
             List<MailConfig> listMailConfig = _mailServer.GetListConfig(serverIp);
 
-            var policy = _userService.GetUserSiteFunctionKeyPolicy(this.CurrentSession.UserId, this.SiteId, SiteFunctionKeys.ApplicationManagement);
-            ViewBag.Policy = policy;
+            ViewBag.Policy = _userService.GetUserSiteFunctionKeyPolicy(this.CurrentSession.UserId, this.SiteId, SiteFunctionKeys.ApplicationManagement);
 
             return View(listMailConfig);
         }
@@ -682,34 +676,6 @@ namespace Fanex.Maintenance.Controller
             });
 
             ViewBag.PageSize = listPageSize;
-        }
-
-        /// <summary>
-        /// Initialize list mail status for view.
-        /// </summary>
-        private void InitMailStatus()
-        {
-            List<SelectListItem> listMailStatus = new List<SelectListItem>();
-
-            listMailStatus.Add(new SelectListItem
-            {
-                Text = MailStatus.All.ToString(),
-                Value = ((int)MailStatus.All).ToString()
-            });
-
-            listMailStatus.Add(new SelectListItem
-            {
-                Text = MailStatus.Fail.ToString(),
-                Value = ((int)MailStatus.Fail).ToString()
-            });
-
-            listMailStatus.Add(new SelectListItem
-            {
-                Text = MailStatus.Success.ToString(),
-                Value = ((int)MailStatus.Success).ToString()
-            });
-
-            ViewBag.MailStatus = listMailStatus;
         }
 
         /// <summary>

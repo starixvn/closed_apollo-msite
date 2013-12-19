@@ -26,7 +26,11 @@
                 @Html.Label("Status")
             </div>
             <div class="edit-field">
-                @Html.DropDownList("MailStatus", (List<SelectListItem>)ViewBag.MailStatus)
+				<select id="MailStatus" name="MailStatus">
+					<option value="@((int)MailStatus.All)">@MailStatus.All</option>
+					<option value="@((int)MailStatus.Fail)">@MailStatus.Fail</option>
+					<option value="@((int)MailStatus.Success)">@MailStatus.Success</option>
+				</select>
             </div>
             <div class="lbl-field width-auto">
                 @Html.Label("From")

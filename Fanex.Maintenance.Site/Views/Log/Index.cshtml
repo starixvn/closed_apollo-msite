@@ -36,7 +36,14 @@
                     @Html.LabelFor(m => m.Severity, ViewResource.Severity)
                 </div>
                 <div class="edit-field width-100">
-                    @Html.DropDownListFor(m => m.Severity, (List<SelectListItem>)ViewBag.ListSeverity, new { @class = "width-100" })
+					<select id="Severity" class="width-100" name="Severity">
+						<option value="All" selected="selected">@ViewResource.All</option>
+						<option value="Critical">@ViewResource.Severity_Critical</option>
+						<option value="Error">@ViewResource.Severity_Error</option>
+						<option value="Information">@ViewResource.Severity_Information</option>
+						<option value="Verbose">@ViewResource.Severity_Verbose</option>
+						<option value="Warning">@ViewResource.Severity_Warning</option>
+					</select>
                 </div>
             </div>
             <div class="filter-row">
@@ -56,7 +63,11 @@
                     @Html.LabelFor(m => m.IsMonitored, ViewResource.Status)
                 </div>
                 <div class="edit-field width-120">
-                    @Html.DropDownListFor(m => m.IsMonitored, (List<SelectListItem>)ViewBag.LogStatus, new { @class = "width-100" })
+					<select id="IsMonitored" class="width-100" name="IsMonitored">
+						<option value="null">@ViewResource.All</option>
+						<option value="true">@ViewResource.LogStatus_Monitored</option>
+						<option value="false">@ViewResource.LogStatus_Unmonitored</option>
+					</select>
                 </div>
                 <div class="submit">
                     <input type="button" value="@ViewResource.Submit" id="submit" />

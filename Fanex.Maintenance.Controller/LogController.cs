@@ -217,106 +217,10 @@ namespace Fanex.Maintenance.Controller
         }
 
         /// <summary>
-        /// Initialize Machine Types data.
-        /// </summary>
-        private void InitMachineTypes()
-        {
-            List<SelectListItem> machineTypes = new List<SelectListItem>();
-
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.All,
-                Value = "null"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_Production,
-                Value = "true"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_UAT,
-                Value = "false"
-            });
-
-            ViewBag.MachineTypes = machineTypes;
-        }
-
-        /// <summary>
-        /// Initialize Log Status data.
-        /// </summary>
-        private void InitLogStatus()
-        {
-            List<SelectListItem> logStatus = new List<SelectListItem>();
-
-            logStatus.Add(new SelectListItem
-            {
-                Text = ViewResource.All,
-                Value = "null"
-            });
-            logStatus.Add(new SelectListItem
-            {
-                Text = ViewResource.LogStatus_Monitored,
-                Value = "true"
-            });
-            logStatus.Add(new SelectListItem
-            {
-                Text = ViewResource.LogStatus_Unmonitored,
-                Value = "false"
-            });
-
-            ViewBag.LogStatus = logStatus;
-        }
-
-        /// <summary>
-        /// Initialize Severities data.
-        /// </summary>
-        private void InitSeverities()
-        {
-            ////Init Serverity
-            List<SelectListItem> list = new List<SelectListItem>();
-
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.All,
-                Value = "All"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Critical,
-                Value = "Critical"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Error,
-                Value = "Error"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Information,
-                Value = "Information"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Verbose,
-                Value = "Verbose"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Warning,
-                Value = "Warning"
-            });
-            ViewBag.ListSeverity = list;
-        }
-
-        /// <summary>
         /// Initialize data for View.
         /// </summary>
         private void InitDataView()
         {
-            InitSeverities();
-            InitLogStatus();
-
             // Default selection for drop-down
             SelectListItem defaultSelection = new SelectListItem
             {
