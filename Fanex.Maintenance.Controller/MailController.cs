@@ -68,7 +68,6 @@ namespace Fanex.Maintenance.Controller
         [HttpGet]
         public ActionResult MailList(int appId = 0)
         {
-            InitPageSize();
             InitDataMailConfig(appId);
 
             var totalRows = 0;
@@ -98,7 +97,6 @@ namespace Fanex.Maintenance.Controller
         [HttpPost]
         public ActionResult MailList(string from, string to, int applicationID = 0, int mailStatus = 0, int size = 10)
         {
-            InitPageSize();
             InitDataMailConfig();
 
             var totalRows = 0;
@@ -644,39 +642,6 @@ namespace Fanex.Maintenance.Controller
         #endregion
 
         #region InitData
-
-        /// <summary>
-        /// Initialize Page Size.
-        /// </summary>
-        private void InitPageSize()
-        {
-            List<SelectListItem> listPageSize = new List<SelectListItem>();
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "10",
-                Value = "10"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "30",
-                Value = "30"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "50",
-                Value = "50"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "100",
-                Value = "100"
-            });
-
-            ViewBag.PageSize = listPageSize;
-        }
 
         /// <summary>
         /// Initialize list mail config for view.

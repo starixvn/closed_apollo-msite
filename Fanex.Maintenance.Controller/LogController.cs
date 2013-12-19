@@ -70,7 +70,6 @@ namespace Fanex.Maintenance.Controller
         public ActionResult Index()
         {
             InitDataView();
-            InitPageSize();
 
             ViewBag.ListLog = null;
 
@@ -99,7 +98,6 @@ namespace Fanex.Maintenance.Controller
         public ActionResult Index(GetLogCriteria criteria)
         {
             InitDataView();
-            InitPageSize();
 
             var totalRows = 0;
 
@@ -184,45 +182,12 @@ namespace Fanex.Maintenance.Controller
         #region Private
 
         /// <summary>
-        /// Initialize Page Size.
-        /// </summary>
-        private void InitPageSize()
-        {
-            List<SelectListItem> listPageSize = new List<SelectListItem>();
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "10",
-                Value = "10"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "30",
-                Value = "30"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "50",
-                Value = "50"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "100",
-                Value = "100"
-            });
-
-            ViewBag.PageSize = listPageSize;
-        }
-
-        /// <summary>
         /// Initialize data for View.
         /// </summary>
         private void InitDataView()
         {
             // Default selection for drop-down
-            SelectListItem defaultSelection = new SelectListItem
+            var defaultSelection = new SelectListItem
             {
                 Text = ViewResource.All,
                 Value = "0",
