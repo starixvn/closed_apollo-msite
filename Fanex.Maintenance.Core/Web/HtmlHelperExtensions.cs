@@ -64,12 +64,6 @@ namespace Fanex.Maintenance.Core.Web
                 }
             }
 
-            DateTime date = DateTime.ParseExact(
-                strTime,
-                "HHmmss",
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None);
-
             return new HtmlString(value.ToString(dateFormat) + " - " + value.ToString(timeFormat).Replace(':', 'h') + "'");
         }
 
@@ -97,8 +91,7 @@ namespace Fanex.Maintenance.Core.Web
         public static IHtmlString ToFullDateString(
             this int value,
             int time,
-            string dateFormat = "MMM dd, yyyy",
-            string timeFormat = "HH:mm")
+            string dateFormat = "MMM dd, yyyy")
         {
             //// check format time correct HHmmss
             string strTime = time.ToString();

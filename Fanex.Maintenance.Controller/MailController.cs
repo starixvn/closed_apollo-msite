@@ -468,7 +468,7 @@ namespace Fanex.Maintenance.Controller
                     IsAuth = isAutho
                 };
 
-                bool check = _mailServer.StoreSetting(mail);
+                _mailServer.StoreSetting(mail);
                 return Json(mail);
             }
 

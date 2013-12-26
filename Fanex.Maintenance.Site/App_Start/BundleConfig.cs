@@ -15,7 +15,7 @@ namespace Fanex.Maintenance.Site.App_Start
     /// <summary>
     /// Bundle config.
     /// </summary>
-    public class BundleConfig
+    public static class BundleConfig
     {
         /// <summary>
         /// Register bundles.

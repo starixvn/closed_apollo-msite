@@ -40,9 +40,9 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
 
         public UserSiteController(ISiteService siteService, ICurrentSession currentSession, IUserService userService)
         {
-            _siteService = _siteService ?? new SiteService();
-            _currentSession = _currentSession ?? new CurrentSession();
-            _userService = _userService ?? new UserService();
+            _siteService = siteService ?? new SiteService();
+            _currentSession = currentSession ?? new CurrentSession();
+            _userService = userService ?? new UserService();
         }
 
         #endregion ctors

@@ -37,25 +37,19 @@ namespace Fanex.Maintenance.Controller
         /// </summary>
         private readonly LogCategoryService _categoryService;
 
-        /// <summary>
-        /// Machine Service.
-        /// </summary>
-        private readonly MachineService _machineService;
-
         #endregion Member
 
         #region Ctor
 
         public LogController()
-            : this(null, null, null)
+            : this(null, null)
         {
         }
 
-        public LogController(LogService logService, LogCategoryService categoryService, MachineService machineService)
+        public LogController(LogService logService, LogCategoryService categoryService)
         {
             _logService = logService ?? LogService.Create();
             _categoryService = categoryService ?? LogCategoryService.Create();
-            _machineService = machineService ?? MachineService.Create();
         }
 
         #endregion Ctor

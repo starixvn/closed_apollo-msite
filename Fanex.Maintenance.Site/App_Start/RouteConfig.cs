@@ -15,7 +15,7 @@ namespace Fanex.Maintenance.Site
     /// <summary>
     /// Route configuration.
     /// </summary>
-    public class RouteConfig
+    public static class RouteConfig
     {
         /// <summary>
         /// Register routes.

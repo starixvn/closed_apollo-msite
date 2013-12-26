@@ -71,7 +71,7 @@ namespace Fanex.Maintenance.Criteria.MailService
         /// <returns>Mail setting.</returns>
         public MailSetting GetMailSetting()
         {
-            MailSetting mailSetting = new MailSetting
+            var mailSetting = new MailSetting
             {
                 IsAuth = this.IsAuth,
                 Password = this.Password,
