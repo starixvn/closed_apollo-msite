@@ -86,7 +86,6 @@ namespace Fanex.Maintenance.Core.Web
         /// <param name="value">Date value.</param>
         /// <param name="time">Time value.</param>
         /// <param name="dateFormat">Date format.</param>
-        /// <param name="timeFormat">Time format.</param>
         /// <returns>HTML string.</returns>
         public static IHtmlString ToFullDateString(
             this int value,
