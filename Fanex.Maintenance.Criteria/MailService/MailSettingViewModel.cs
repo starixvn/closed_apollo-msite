@@ -14,7 +14,7 @@ namespace Fanex.Maintenance.Criteria.MailService
     using MailDeliver.Model;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Mail setting view model.
     /// </summary>
     public class MailSettingViewModel
     {

@@ -19,16 +19,16 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
     /// </summary>
     public class CommonController : Controller
     {
-        private readonly IMaintainanceService _maintenanceService;
+        private readonly IMaintenanceService _maintenanceService;
 
         public CommonController()
             : this(null)
         {
         }
 
-        public CommonController(IMaintainanceService maintenanceService)
+        public CommonController(IMaintenanceService maintenanceService)
         {
-            _maintenanceService = maintenanceService ?? new MaintainanceService();
+            _maintenanceService = maintenanceService ?? new MaintenanceService();
         }
 
         /// <summary>

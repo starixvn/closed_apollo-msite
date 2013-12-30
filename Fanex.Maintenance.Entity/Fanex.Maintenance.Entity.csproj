@@ -45,9 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Model\LogCategory.cs" />
-    <Compile Include="Model\CommandResult.cs" />
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -40,6 +40,9 @@
     <Reference Include="Fanex.Logging">
       <HintPath>..\_Dependencies\Fanex\Fanex.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.NAP.Core">
+      <HintPath>..\_Dependencies\Others\Fanex.NAP.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.NAP.Framework">
       <HintPath>..\_Dependencies\Others\Fanex.NAP.Framework.dll</HintPath>
     </Reference>

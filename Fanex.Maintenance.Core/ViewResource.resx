@@ -570,12 +570,6 @@
   <data name="Active" xml:space="preserve">
     <value>Active</value>
   </data>
-  <data name="Change Connection" xml:space="preserve">
-    <value>Change Connection</value>
-  </data>
-  <data name="Connection String" xml:space="preserve">
-    <value>Connection String</value>
-  </data>
   <data name="Database_Server" xml:space="preserve">
     <value>Database Server</value>
   </data>

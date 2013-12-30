@@ -16,6 +16,7 @@ namespace Fanex.Maintenance.Repository.Impl
     using System.Data;
     using Fanex.Data;
     using Fanex.Maintenance.Entity.Model;
+    using Fanex.NAP.Framework.Command;
     using Fanex.NAP.Framework.Data;
 
     /// <summary>

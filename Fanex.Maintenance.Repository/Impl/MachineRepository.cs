@@ -13,8 +13,9 @@ namespace Fanex.Maintenance.Repository.Impl
     using System.Collections.Generic;
     using Fanex.Data;
     using Fanex.Maintenance.Criteria.Log;
-    using Fanex.Maintenance.Criteria.Misc;
     using Fanex.Maintenance.Entity.Model;
+    using Fanex.NAP.Core.Criteria.Misc;
+    using Fanex.NAP.Framework.Command;
     using Fanex.NAP.Framework.Data;
 
     /// <summary>
@@ -62,6 +63,7 @@ namespace Fanex.Maintenance.Repository.Impl
         public CommandResult UpdateMachine(UpdateMachineCriteria criteria)
         {
             Hashtable hash = criteria.GetSpParams();
+
             hash = (new ResultCriteria()).AddSpParams(hash);
 
             using (var db = new ObjectDb(criteria.GetSettingKey()))

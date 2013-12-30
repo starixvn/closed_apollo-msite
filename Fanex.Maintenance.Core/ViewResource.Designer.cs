@@ -304,15 +304,6 @@ namespace Fanex.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change Connection.
-        /// </summary>
-        public static string Change_Connection {
-            get {
-                return ResourceManager.GetString("Change Connection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Change Connection From Database Server.
         /// </summary>
         public static string Change_Connection_FromDb {
@@ -345,15 +336,6 @@ namespace Fanex.Maintenance.Core {
         public static string Connection {
             get {
                 return ResourceManager.GetString("Connection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Connection String.
-        /// </summary>
-        public static string Connection_String {
-            get {
-                return ResourceManager.GetString("Connection String", resourceCulture);
             }
         }
         

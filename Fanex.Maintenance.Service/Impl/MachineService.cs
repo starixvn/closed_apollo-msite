@@ -13,6 +13,7 @@ namespace Fanex.Maintenance.Service.Impl
     using Fanex.Maintenance.Criteria.Log;
     using Fanex.Maintenance.Entity.Model;
     using Fanex.Maintenance.Repository.Impl;
+    using Fanex.NAP.Framework.Command;
 
     /// <summary>
     /// Machine Service.

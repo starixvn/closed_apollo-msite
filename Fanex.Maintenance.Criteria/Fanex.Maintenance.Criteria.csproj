@@ -57,8 +57,6 @@
     <Compile Include="MailService\MailConfigViewModel.cs" />
     <Compile Include="MailService\MailFunctionViewModel.cs" />
     <Compile Include="MailService\MailSettingViewModel.cs" />
-    <Compile Include="Misc\LogExecSpCriteria.cs" />
-    <Compile Include="Misc\ResultCriteria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -10,9 +10,10 @@
 namespace Fanex.Maintenance.Controller
 {
     using System.Web.Mvc;
-    using Fanex.Maintenance.Service.Impl;
-    using Fanex.Maintenance.Service.Interface;
+    using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Configuration;
+    using Fanex.NAP.Core.Service.Impl;
+    using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web;
     using Fanex.NAP.Core.Web.Context;
     using Fanex.NAP.Core.Web.Session;
@@ -34,6 +35,8 @@ namespace Fanex.Maintenance.Controller
 
         private bool _issiteLogin = NapSettings.Settings.EnableDirectLogin;
 
+        private IUserService _userService;
+
         public BaseController()
         {
             CurrentContext = new CurrentContext();
@@ -49,6 +52,8 @@ namespace Fanex.Maintenance.Controller
             {
                 IsReCheckin = NapSettings.Settings.EnableReCheckIn
             };
+
+            _userService = new UserService { ServiceContext = ServiceContext };
         }
 
         /// <summary>
@@ -74,6 +79,33 @@ namespace Fanex.Maintenance.Controller
             {
                 ViewBag.ViewFlags = value;
             }
+        }
+
+        /// <summary>
+        /// Determines whether the specified user has the right on a function.
+        /// </summary>
+        /// <param name="functionKey">The function key.</param>
+        /// <param name="policy">The policy.</param>
+        /// <returns>Whether the specified user has the right on a function.</returns>
+        public bool HasRight(string functionKey, Constant.Policy policy)
+        {
+            int functionPolicy = _userService.GetUserSiteFunctionKeyPolicy(CurrentSession.UserId, this.SiteId, functionKey);
+
+            return functionPolicy >= (int)policy;
+        }
+
+        /// <summary>
+        /// Determines whether the specified user has the right on a function of a site.
+        /// </summary>
+        /// <param name="siteId">The site ID.</param>
+        /// <param name="functionKey">The function key.</param>
+        /// <param name="policy">The policy.</param>
+        /// <returns>Whether the specified user has the right on a function.</returns>
+        public bool HasRightOnSite(int siteId, string functionKey, Constant.Policy policy)
+        {
+            int functionPolicy = _userService.GetUserSiteFunctionKeyPolicy(CurrentSession.UserId, siteId, functionKey);
+
+            return functionPolicy >= (int)policy;
         }
 
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)

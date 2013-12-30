@@ -40,7 +40,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         private ISiteService _siteService;
         private IMenuItemService _menuItemService;
         private ICurrentSession _currentSession;
-        private IMaintainanceService _maintenanceService;
+        private IMaintenanceService _maintenanceService;
 
         #endregion members
 
@@ -57,14 +57,14 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
             ISiteService siteService,
             IMenuItemService menuItemService,
             ICurrentSession currentSession,
-            IMaintainanceService maintenanceService)
+            IMaintenanceService maintenanceService)
         {
             _userService = userService ?? new UserService();
             _groupService = groupService ?? new GroupService();
             _siteService = siteService ?? new SiteService();
             _menuItemService = menuItemService ?? new MenuItemService();
             _currentSession = currentSession ?? new CurrentSession();
-            _maintenanceService = maintenanceService ?? new MaintainanceService();
+            _maintenanceService = maintenanceService ?? new MaintenanceService();
         }
 
         #endregion ctors

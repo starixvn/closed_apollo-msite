@@ -40,7 +40,7 @@ namespace Fanex.Maintenance.Service.Impl
         /// <returns>List of log category.</returns>
         public IEnumerable<LogCategory> GetAll()
         {
-            GetAllCategoryCriteria criteria = new GetAllCategoryCriteria();
+            var criteria = new GetAllCategoryCriteria();
 
             return _categoryRepository.Fetch(criteria);
         }
