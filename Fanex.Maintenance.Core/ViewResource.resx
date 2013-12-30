@@ -477,21 +477,6 @@
   <data name="Success" xml:space="preserve">
     <value>Success</value>
   </data>
-  <data name="FreqAgentStart" xml:space="preserve">
-    <value>SQL Server Agent service starts</value>
-  </data>
-  <data name="FreqComputerIdle" xml:space="preserve">
-    <value>Computer is idle</value>
-  </data>
-  <data name="FreqMonthlyRelative" xml:space="preserve">
-    <value>Monthly Relative</value>
-  </data>
-  <data name="FreqOneTime" xml:space="preserve">
-    <value>One time only</value>
-  </data>
-  <data name="FreqSubSpecificTime" xml:space="preserve">
-    <value>At the specified time</value>
-  </data>
   <data name="Schedule" xml:space="preserve">
     <value>Schedule</value>
   </data>
@@ -515,12 +500,6 @@
   </data>
   <data name="N_A" xml:space="preserve">
     <value>N/A</value>
-  </data>
-  <data name="FrequentSubType" xml:space="preserve">
-    <value>Frequent Sub</value>
-  </data>
-  <data name="FrequentType" xml:space="preserve">
-    <value>Frequent</value>
   </data>
   <data name="JobLog" xml:space="preserve">
     <value>Job Log</value>
