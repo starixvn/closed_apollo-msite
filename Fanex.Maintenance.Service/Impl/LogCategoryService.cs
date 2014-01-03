@@ -10,8 +10,8 @@
 namespace Fanex.Maintenance.Service.Impl
 {
     using System.Collections.Generic;
-    using Fanex.Maintenance.Criteria.Log;
     using Fanex.Maintenance.Core.Model;
+    using Fanex.Maintenance.Criteria.Log;
     using Fanex.Maintenance.Repository.Impl;
 
     /// <summary>

@@ -13,8 +13,8 @@ namespace Fanex.Maintenance.Controller
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Fanex.Maintenance.Criteria.Log;
     using Fanex.Maintenance.Core.Model;
+    using Fanex.Maintenance.Criteria.Log;
     using Fanex.Maintenance.Service.Impl;
 
     /// <summary>

@@ -12,8 +12,8 @@ namespace Fanex.Maintenance.Repository.Impl
     using System;
     using System.Collections.Generic;
     using Fanex.Data;
-    using Fanex.Maintenance.Criteria.Log;
     using Fanex.Maintenance.Core.Model;
+    using Fanex.Maintenance.Criteria.Log;
     using Fanex.NAP.Framework.Data;
 
     /// <summary>
