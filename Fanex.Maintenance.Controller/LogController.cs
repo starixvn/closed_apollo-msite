@@ -17,7 +17,7 @@ namespace Fanex.Maintenance.Controller
     using System.Web.Mvc;
     using Fanex.Maintenance.Core;
     using Fanex.Maintenance.Criteria.Log;
-    using Fanex.Maintenance.Entity.Model;
+    using Fanex.Maintenance.Core.Model;
     using Fanex.Maintenance.Service.Impl;
 
     /// <summary>

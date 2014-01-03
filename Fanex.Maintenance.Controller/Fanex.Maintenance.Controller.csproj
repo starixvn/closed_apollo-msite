@@ -68,10 +68,6 @@
       <Project>{4004F1EE-1FB8-486C-903E-326C360DBD81}</Project>
       <Name>Fanex.Maintenance.Criteria</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.Maintenance.Entity\Fanex.Maintenance.Entity.csproj">
-      <Project>{E3068DAE-66EC-4E52-98B7-D1152F2D8519}</Project>
-      <Name>Fanex.Maintenance.Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fanex.Maintenance.Repository\Fanex.Maintenance.Repository.csproj">
       <Project>{8858DC31-A292-4388-8E07-9B2E345A3FE6}</Project>
       <Name>Fanex.Maintenance.Repository</Name>

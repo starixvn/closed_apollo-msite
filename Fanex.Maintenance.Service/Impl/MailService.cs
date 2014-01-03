@@ -147,7 +147,7 @@ namespace Fanex.Maintenance.Service.Impl
         {
             var mails = new List<MailRecord>();
 
-            using (var client = new Fanex.MailDeliver.MailClient.API.MailDeliver())
+            using (var client = new MailDeliver())
             {
                 var dateTime = DateTime.Parse(_fromDate);
                 var dateTimeTo = DateTime.Parse(_toDate);

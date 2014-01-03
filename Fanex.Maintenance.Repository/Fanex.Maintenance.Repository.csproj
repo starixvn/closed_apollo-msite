@@ -68,10 +68,6 @@
       <Project>{4004F1EE-1FB8-486C-903E-326C360DBD81}</Project>
       <Name>Fanex.Maintenance.Criteria</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.Maintenance.Entity\Fanex.Maintenance.Entity.csproj">
-      <Project>{E3068DAE-66EC-4E52-98B7-D1152F2D8519}</Project>
-      <Name>Fanex.Maintenance.Entity</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

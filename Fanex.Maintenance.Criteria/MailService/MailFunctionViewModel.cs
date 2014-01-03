@@ -43,11 +43,9 @@ namespace Fanex.Maintenance.Criteria.MailService
         [Required]
         [Display(Name = "Function_Name", ResourceType = typeof(ViewResource))]
         [StringLength(50, MinimumLength = 2,
-            ErrorMessageResourceName = "InputLengthValidationMsg",
-            ErrorMessageResourceType = typeof(ViewResource))]
+            ErrorMessageResourceName = "InputLengthValidationMsg", ErrorMessageResourceType = typeof(ViewResource))]
         [RegularExpression(@"^[\w\s]{1,}$",
-            ErrorMessageResourceName = "InvalidNameValidationMsg",
-            ErrorMessageResourceType = typeof(ViewResource))]
+            ErrorMessageResourceName = "InvalidNameValidationMsg", ErrorMessageResourceType = typeof(ViewResource))]
         public string FunctionName { get; set; }
 
         /// <summary>
@@ -56,7 +54,7 @@ namespace Fanex.Maintenance.Criteria.MailService
         /// <returns>Mail function.</returns>
         public MailFunction GetMailFunction()
         {
-            MailFunction mailFunction = new MailFunction
+            var mailFunction = new MailFunction
             {
                 Config = new MailConfig
                 {

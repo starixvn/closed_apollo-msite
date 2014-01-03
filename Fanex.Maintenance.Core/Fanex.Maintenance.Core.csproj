@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -51,6 +52,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SiteFunctionKeys.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Log.cs" />
+    <Compile Include="Model\LogCategory.cs" />
+    <Compile Include="Model\Machine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewResource.Designer.cs">
       <DependentUpon>ViewResource.resx</DependentUpon>

@@ -12,7 +12,7 @@ namespace Fanex.Maintenance.Service.Impl
     using System;
     using System.Collections.Generic;
     using Fanex.Maintenance.Criteria.Log;
-    using Fanex.Maintenance.Entity.Model;
+    using Fanex.Maintenance.Core.Model;
     using Fanex.Maintenance.Repository.Impl;
 
     /// <summary>
@@ -151,8 +151,7 @@ namespace Fanex.Maintenance.Service.Impl
         /// <returns>Message string.</returns>
         public string GetMessage(long logId)
         {
-            string message = string.Empty;
-            message = _logRepository.GetLogMessage(logId);
+            string message = _logRepository.GetLogMessage(logId);
 
             return message;
         }

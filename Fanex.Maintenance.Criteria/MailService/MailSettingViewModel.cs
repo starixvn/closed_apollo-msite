@@ -32,20 +32,18 @@ namespace Fanex.Maintenance.Criteria.MailService
             this.Password = mailSetting.Password;
             this.IsAuth = mailSetting.IsAuth;
         }
-        
+
         public int SettingId { get; set; }
-                
+
         [Display(Name = "Setting_Name", ResourceType = typeof(ViewResource))]
         [StringLength(50, MinimumLength = 2,
-            ErrorMessageResourceName = "InputLengthValidationMsg",
-            ErrorMessageResourceType = typeof(ViewResource))]
+            ErrorMessageResourceName = "InputLengthValidationMsg", ErrorMessageResourceType = typeof(ViewResource))]
         public string SettingName { get; set; }
 
         [Required]
         [Display(Name = "Server", ResourceType = typeof(ViewResource))]
         [StringLength(50, MinimumLength = 2,
-            ErrorMessageResourceName = "InputLengthValidationMsg",
-            ErrorMessageResourceType = typeof(ViewResource))]
+            ErrorMessageResourceName = "InputLengthValidationMsg", ErrorMessageResourceType = typeof(ViewResource))]
         public string Server { get; set; }
 
         [Required]
@@ -55,8 +53,7 @@ namespace Fanex.Maintenance.Criteria.MailService
         [Required]
         [Display(Name = "Username", ResourceType = typeof(ViewResource))]
         [StringLength(50, MinimumLength = 2,
-            ErrorMessageResourceName = "InputLengthValidationMsg",
-            ErrorMessageResourceType = typeof(ViewResource))]
+            ErrorMessageResourceName = "InputLengthValidationMsg", ErrorMessageResourceType = typeof(ViewResource))]
         public string Username { get; set; }
 
         [Display(Name = "Password", ResourceType = typeof(ViewResource))]
