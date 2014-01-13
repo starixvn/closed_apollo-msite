@@ -32,7 +32,7 @@ namespace Fanex.Maintenance.Repository.Impl
             {
                 var param = criteria.GetSpParams();
 
-                var list = db.Query<Log, LogCategory, Machine, Log>(
+                IEnumerable<Log> list = db.Query<Log, LogCategory, Machine, Log>(
                     (l, c, m) =>
                     {
                         l.Category = c;

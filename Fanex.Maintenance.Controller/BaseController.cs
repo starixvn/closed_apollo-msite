@@ -9,6 +9,7 @@
 
 namespace Fanex.Maintenance.Controller
 {
+    using System.Text;
     using System.Web.Mvc;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Configuration;
@@ -108,7 +109,7 @@ namespace Fanex.Maintenance.Controller
             return functionPolicy >= (int)policy;
         }
 
-        protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
+        protected override JsonResult Json(object data, string contentType, Encoding contentEncoding, JsonRequestBehavior behavior)
         {
             return new JsonResult()
             {

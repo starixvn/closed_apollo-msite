@@ -227,7 +227,7 @@ namespace Fanex.Maintenance.Controller
 
             List<MailConfig> listMailConfig = _mailServer.GetListConfig(serverIp);
 
-            ViewBag.Policy = _userService.GetUserSiteFunctionKeyPolicy(this.CurrentSession.UserId, this.SiteId, SiteFunctionKeys.ApplicationManagement);
+            ViewFlags.HasEditRight = HasRight(SiteFunctionKeys.ApplicationManagement, Constant.Policy.Host);
 
             return View(listMailConfig);
         }
@@ -245,8 +245,7 @@ namespace Fanex.Maintenance.Controller
 
             List<MailConfig> listMailConfig = this._mailServer.GetListConfig(serverIp);
 
-            var policy = _userService.GetUserSiteFunctionKeyPolicy(this.CurrentSession.UserId, this.SiteId, SiteFunctionKeys.ApplicationManagement);
-            ViewBag.Policy = policy;
+            ViewFlags.HasEditRight = HasRight(SiteFunctionKeys.ApplicationManagement, Constant.Policy.Host);
 
             return View(listMailConfig);
         }
@@ -586,8 +585,7 @@ namespace Fanex.Maintenance.Controller
             DateTime dateFrom = !string.IsNullOrWhiteSpace(from) ? DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture) : DateTime.Now;
             DateTime dateTo = !string.IsNullOrWhiteSpace(from) ? DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture) : DateTime.Now;
 
-            List<MailRecord> listMail = new List<MailRecord>();
-            listMail = _mailServer.WithApp(applicationID)
+            List<MailRecord> listMail = _mailServer.WithApp(applicationID)
                 .FromDate(dateFrom.ToString())
                 .ToDate(dateTo.ToString())
                 .WithPagination(page, size)

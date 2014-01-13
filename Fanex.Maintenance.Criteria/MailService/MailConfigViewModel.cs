@@ -10,8 +10,8 @@
 namespace Fanex.Maintenance.Criteria.MailService
 {
     using System.ComponentModel.DataAnnotations;
+    using Fanex.MailDeliver.Model;
     using Fanex.Maintenance.Core;
-    using MailDeliver.Model;
 
     /// <summary>
     /// Mail config view model.

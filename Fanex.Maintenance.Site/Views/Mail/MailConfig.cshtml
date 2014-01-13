@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = ViewResource.Mail_Config;
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var policy = (int)ViewBag.Policy;
+	var viewFlags = (ViewFlags)ViewBag.ViewFlags;
 }
 @section Head {
     @Styles.Render("~/css/manage")
@@ -12,7 +12,7 @@
 @section Headline {
     <h1>
         <span class="title">@ViewBag.Title</span>
-        @if (policy == (int)Constant.Policy.Host)
+        @if (viewFlags.HasEditRight)
         { 
             @Html.ActionLink("+ Create New", "AddMailConfig", "Mail", null, new { @class = "lnk" })
         }
@@ -58,7 +58,7 @@
             <th>
                 @ViewResource.View_Report
             </th>
-            @if (policy == (int)Constant.Policy.Host)
+            @if (viewFlags.HasEditRight)
             { 
                 <th>
                     @ViewResource.Edit
@@ -99,7 +99,7 @@
                         @Html.ActionLink(" ", "MailList", new { id = mailItem.AppID }, new { @class = "icon-link" })
                     </div>
                 </td>
-                @if (policy == (int)Constant.Policy.Host)
+                @if (viewFlags.HasEditRight)
                 { 
                     <td class="align-center">
                         <div class="action-wrp">

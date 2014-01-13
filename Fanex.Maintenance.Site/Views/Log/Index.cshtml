@@ -15,27 +15,27 @@
     </h1>
 }
 @using (Html.BeginForm())
-{  
-    <section id="filter-bar" style="width: 98%">
-        <div class="filter-form">
-            <div class="filter-row">
-                <div class="lbl-field width-auto">
-                    @Html.LabelFor(m => m.CategoryId, ViewResource.Category)
-                </div>
-                <div class="edit-field width-180">
-                    @Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.ListCategory, new { @class = "width-180" })
-                </div>
-                <div class="lbl-field width-80">
-                    @Html.LabelFor(m => m.MachineId, ViewResource.Machine)
-                </div>
-                <div class="edit-field width-180">
-                    <select id="MachineId" name="MachineId" class="width-180">
-                    </select>
-                </div>
-                <div class="lbl-field width-80">
-                    @Html.LabelFor(m => m.Severity, ViewResource.Severity)
-                </div>
-                <div class="edit-field width-100">
+{
+	<section id="filter-bar" style="width: 98%">
+		<div class="filter-form">
+			<div class="filter-row">
+				<div class="lbl-field width-auto">
+					@Html.LabelFor(m => m.CategoryId, ViewResource.Category)
+				</div>
+				<div class="edit-field width-180">
+					@Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.ListCategory, new { @class = "width-180" })
+				</div>
+				<div class="lbl-field width-80">
+					@Html.LabelFor(m => m.MachineId, ViewResource.Machine)
+				</div>
+				<div class="edit-field width-180">
+					<select id="MachineId" name="MachineId" class="width-180">
+					</select>
+				</div>
+				<div class="lbl-field width-80">
+					@Html.LabelFor(m => m.Severity, ViewResource.Severity)
+				</div>
+				<div class="edit-field width-100">
 					<select id="Severity" class="width-100" name="Severity">
 						<option value="All" selected="selected">@ViewResource.All</option>
 						<option value="Critical">@ViewResource.Severity_Critical</option>
@@ -44,69 +44,69 @@
 						<option value="Verbose">@ViewResource.Severity_Verbose</option>
 						<option value="Warning">@ViewResource.Severity_Warning</option>
 					</select>
-                </div>
-            </div>
-            <div class="filter-row">
-                <div class="lbl-field width-60">
-                    @Html.LabelFor(m => m.From, ViewResource.From)
-                </div>
-                <div class="edit-field width-180">
-                    @Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @style = "width:137px;margin-right:5px;", @autocomplete = "off" })
-                </div>
-                <div class="lbl-field width-80">
-                    @Html.LabelFor(m => m.To, ViewResource.To)
-                </div>
-                <div class="edit-field width-180">
-                    @Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @style = "width:137px;margin-right:5px;", @autocomplete = "off" })
-                </div>
-                <div class="lbl-field width-80">
-                    @Html.LabelFor(m => m.IsMonitored, ViewResource.Status)
-                </div>
-                <div class="edit-field width-120">
+				</div>
+			</div>
+			<div class="filter-row">
+				<div class="lbl-field width-60">
+					@Html.LabelFor(m => m.From, ViewResource.From)
+				</div>
+				<div class="edit-field width-180">
+					@Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @style = "width:137px;margin-right:5px;", @autocomplete = "off" })
+				</div>
+				<div class="lbl-field width-80">
+					@Html.LabelFor(m => m.To, ViewResource.To)
+				</div>
+				<div class="edit-field width-180">
+					@Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @style = "width:137px;margin-right:5px;", @autocomplete = "off" })
+				</div>
+				<div class="lbl-field width-80">
+					@Html.LabelFor(m => m.IsMonitored, ViewResource.Status)
+				</div>
+				<div class="edit-field width-120">
 					<select id="IsMonitored" class="width-100" name="IsMonitored">
 						<option value="null">@ViewResource.All</option>
 						<option value="true">@ViewResource.LogStatus_Monitored</option>
 						<option value="false">@ViewResource.LogStatus_Unmonitored</option>
 					</select>
-                </div>
-                <div class="submit">
-                    <input type="button" value="@ViewResource.Submit" id="submit" />
-                </div>
-            </div>
-        </div>
-    </section>
-    @Html.HiddenFor(m => m.Page)   
-    <div id="pagination">
-    </div>     
-    <table class="grid persist-area">
-        <thead class="persist-header">
-            <tr>
-                <th>
-                    #
-                </th>
-                <th>
-                    Message
-                </th>
-                <th class="width-120">
-                    Category
-                </th>
-                <th>
-                    Severity
-                </th>
-                <th class="width-180">
-                    Machine
-                </th>
-                <th class="width-100">
-                    <input type="checkbox" id="chbMonitorAll" /><lable for="chbMonitorAll">Handled By</lable>
-                </th>
-                <th class="width-100">
-                    Time (GMT+7)
-                </th>
-            </tr>
-        </thead>
-        <tbody id="content">
-        </tbody>
-    </table>
+				</div>
+				<div class="submit">
+					<input type="button" value="@ViewResource.Submit" id="submit" />
+				</div>
+			</div>
+		</div>
+	</section>
+	@Html.HiddenFor(m => m.Page)
+	<div id="pagination">
+	</div>
+	<table class="grid persist-area">
+		<thead class="persist-header">
+			<tr>
+				<th>
+					#
+				</th>
+				<th>
+					Message
+				</th>
+				<th class="width-120">
+					Category
+				</th>
+				<th>
+					Severity
+				</th>
+				<th class="width-180">
+					Machine
+				</th>
+				<th class="width-100">
+					<input type="checkbox" id="chbMonitorAll" /><lable for="chbMonitorAll">Handled By</lable>
+				</th>
+				<th class="width-100">
+					Time (GMT+7)
+				</th>
+			</tr>
+		</thead>
+		<tbody id="content">
+		</tbody>
+	</table>
 }
 @Html.Hidden("imagePath", (string)@Url.Content("~/images/calendar.gif"))
 @section Foot {

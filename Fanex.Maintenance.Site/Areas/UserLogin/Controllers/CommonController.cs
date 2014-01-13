@@ -11,6 +11,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
 {
     using System.Web.Mvc;
     using System.Web.Security;
+    using Fanex.NAP.Core.Model.ValueObject;
     using Fanex.NAP.Core.Service.Impl;
     using Fanex.NAP.Core.Service.Interface;
 
@@ -37,7 +38,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         /// <returns>Action result.</returns>
         public ActionResult Offline()
         {
-            var downTime = _maintenanceService.GetDowntimeInfo();
+            Downtime downTime = _maintenanceService.GetDowntimeInfo();
 
             if (!downTime.IsDowntime)
             {

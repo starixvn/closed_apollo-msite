@@ -45,13 +45,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Impl\BaseRepository.cs" />
     <Compile Include="Impl\LogCategoryRepository.cs" />
     <Compile Include="Impl\LogRepository.cs" />
     <Compile Include="Impl\MachineRepository.cs" />

@@ -22,6 +22,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
     using Fanex.NAP.Core.Configuration;
     using Fanex.NAP.Core.Criteria.User;
     using Fanex.NAP.Core.Model;
+    using Fanex.NAP.Core.Model.ValueObject;
     using Fanex.NAP.Core.Service.Impl;
     using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web;
@@ -276,7 +277,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
             // check if not nap hub
             if (this.SiteId != 0)
             {
-                var siteStatus = _siteService.GetStatusById(this.SiteId);
+                bool siteStatus = _siteService.GetStatusById(this.SiteId);
 
                 if (!siteStatus)
                 {
@@ -284,7 +285,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
                 }
             }
 
-            UserReCheckInUserCriteria criteria = new UserReCheckInUserCriteria();
+            var criteria = new UserReCheckInUserCriteria();
             criteria.OnUserId = Convert.ToInt32(_currentSession.OnUserId);
             _userService.ReUserCheckIn(ref criteria);
 
@@ -311,7 +312,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         /// <param name="user">User object.</param>
         private void CreateAuthInfo(User user)
         {
-            var currentDomain = CurrentContext.GetCurrentDomain();
+            var domainPath = CurrentContext.GetCurrentDomain().Path;
 
             var authInfo = new AuthInfo();
 
@@ -325,13 +326,13 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
                 DateTime.Now.AddMinutes(20000),
                 false,
                 authInfo.ToXml(),
-                currentDomain.Path);
+                domainPath);
 
             string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
             var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
             {
                 HttpOnly = true,
-                Path = currentDomain.Path,
+                Path = domainPath,
                 Name = FormsAuthentication.FormsCookieName
             };
 
@@ -349,6 +350,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
             {
                 OnUserId = _currentSession.OnUserId
             });
+
             FormsAuthentication.SignOut();
             Response.Cookies.Clear();
             _currentSession.ClearAll();

@@ -15,6 +15,7 @@ namespace Fanex.Maintenance.Repository.Impl
     using Fanex.Maintenance.Core.Model;
     using Fanex.Maintenance.Criteria.Log;
     using Fanex.NAP.Core.Criteria.Misc;
+    using Fanex.NAP.Core.Repository.Impl;
     using Fanex.NAP.Framework.Command;
     using Fanex.NAP.Framework.Data;
 
