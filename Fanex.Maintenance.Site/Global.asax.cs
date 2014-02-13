@@ -10,12 +10,14 @@
 namespace Fanex.Maintenance.Site
 {
     using System;
+    using System.Data.SqlClient;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
     using Fanex.Logging;
     using Fanex.Maintenance.Site.App_Start;
+    using Fanex.Data.Configuration;
 
     /// <summary>
     /// Note: For instructions on enabling IIS6 or IIS7 classic mode, visit http://go.microsoft.com/?LinkId=9394801 .
@@ -33,7 +35,7 @@ namespace Fanex.Maintenance.Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
+            DbSettingProviderManager.Current.Start();
         }
 
         /// <summary>
@@ -48,13 +50,40 @@ namespace Fanex.Maintenance.Site
 
             if (!Request.IsLocal)
             {
+                // Remove sensitive log data
+                var formVariable = string.Empty;
+                int length = Request.Form.Count;
+
+                for (int i = 0; i < length; i++)
+                {
+                    if (!Request.Form.Keys[i].Equals("password", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        if (i != 0)
+                        {
+                            formVariable += "&";
+                        }
+
+                        formVariable += string.Format("{0}={1}", Request.Form.Keys[i], Request.Form[Request.Form.Keys[i]]);
+                    }
+                }
+
+                // Get base exception data
                 string message = ex.Message +
+                    "\r\nType: " + ex.GetType().ToString() +
                     "\r\nSource: " + ex.Source +
                     "\r\nDomain: " + HttpContext.Current.Request.Headers["Host"] +
-                    "\r\nForm: " + Request.Form.ToString() +
-                    "\r\nQueryString: " + Request.QueryString.ToString() +
-                    "\r\nTargetSite: " + ex.TargetSite +
-                    "\r\nStackTrace: " + ex.StackTrace;
+                    "\r\nForm Variable: " + formVariable +
+                    "\r\nQuery String: " + Request.QueryString.ToString() +
+                    "\r\nTarget Site: " + ex.TargetSite +
+                    "\r\nStack Trace: " + ex.StackTrace;
+
+                // Get additional exception data
+                if (ex is SqlException)
+                {
+                    message += "\r\nProcedure: " + ((SqlException)ex).Procedure +
+                        "\r\nLine Number: " + ((SqlException)ex).LineNumber +
+                        "\r\nServer: " + ((SqlException)ex).Server;
+                }
 
                 LogService.Error(message);
             }
