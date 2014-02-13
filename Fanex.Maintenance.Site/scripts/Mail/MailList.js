@@ -1,207 +1,209 @@
-﻿var MailList = function ($) {
+﻿/* global NAP: false */
 
-    return {
-        generateData: function (pageSize, index) {
-            var appId = $('#ApplicationID').val();
-            var from = $('#From').val();
-            var to = $('#To').val();
-            var status = $('#MailStatus').val();
-            index++;
+"use strict";
 
-            $.ajax({
-                url: NAP.resolveClientUrl("Mail/MailListPagi"),
-                data: { status: status, applicationID: appId, from: from, to: to, page: index, size: pageSize },
-                type: 'POST',
-                dataType: 'JSON',
-                cache: false,
-                beforeSend: function () {
-                    NAP.loadingBox.show();
-                },
-                complete: function () {
-                    NAP.loadingBox.close();
-                },
-                success: function (result) {
-                    var data = eval(result.ListMail);
-                    var bodyData = [];
-                    var count = 1;
-                    $.each(data, function (key, value) {
+var MailList = (function ($) {
 
-                        var classFail = "";
-                        var linkSendFail = "0";
-                        if (value.SentFail > 0) {
-                            classFail = "mailfail";
-                            linkSendFail = "<a href='#' class='errormail' data-mailid='" + value.MailID + "'>" + value.SentFail + "</a>";
-                        }
+	return {
+		generateData: function (pageSize, index) {
+			var appId = $('#ApplicationID').val();
+			var from = $('#From').val();
+			var to = $('#To').val();
+			var status = $('#MailStatus').val();
+			index++;
 
-                        var linkResend = "<a href='#' class='resendmail " + classFail + "' data-mailid='" + value.MailID + "'>Resend</a>";
-                        if (value.IsEncrypt || result.HasResend == "0") {
-                            linkResend = "";
-                        }
+			$.ajax({
+				url: NAP.resolveClientUrl("Mail/MailListPagi"),
+				data: { status: status, applicationID: appId, from: from, to: to, page: index, size: pageSize },
+				type: 'POST',
+				dataType: 'JSON',
+				cache: false,
+				beforeSend: function () {
+					NAP.loadingBox.show();
+				},
+				complete: function () {
+					NAP.loadingBox.close();
+				},
+				success: function (result) {
+					var data = result.ListMail;
+					var bodyData = [];
+					var count = 1;
+					$.each(data, function (key, value) {
 
-                        var linkViewDetail = value.Subject;
-                        if (result.HasViewDetail == "1") {
-                            linkViewDetail = "<a href='#' class='emailMessage' data-mailid='" + value.MailID + "'>" + value.Subject + "</a>";
-                        }
+						var classFail = "";
+						var linkSendFail = "0";
+						if (value.SentFail > 0) {
+							classFail = "mailfail";
+							linkSendFail = "<a href='#' class='errormail' data-mailid='" + value.MailID + "'>" + value.SentFail + "</a>";
+						}
 
-                        bodyData.push({
-                            Columns:
-                        [
-                            { Name: "No", Value: pageSize * (index - 1) + count++ },
-                            { Name: "Subject", Value: linkViewDetail },
-                            { Name: "ApplicationName", Value: '<span title="' + value.Config.Setting.SettingName + '">' + value.Config.AppName + '</span>' },
-                            { Name: "MailTo", Value: value.MailTo.split(',').join('<br/>') },
-                            //                            { Name: "MailCc", Value: "" },
-                            {Name: "CreatedDate", Value: value.MailDate },
-                            { Name: "LatestSendDate", Value: value.MailUpdatedDate },
-                            { Name: "SendSuccess", Value: value.SentSuccess },
-                            { Name: "SendFail", Value: linkSendFail },
-                            { Name: "Resend", Value: linkResend }
-                        ],
-                            CssClass: value.SentSuccess == 0 ? "mailfail" : ""
-                        });
-                    });
+						var linkResend = "<a href='#' class='resendmail " + classFail + "' data-mailid='" + value.MailID + "'>Resend</a>";
+						if (value.IsEncrypt || result.HasResend === "0") {
+							linkResend = "";
+						}
 
-                    var gridOption = {
-                        columns: [
-                            { HeaderText: "#", Width: 35, Name: "No", HeaderAlign: "center", CellAlign: "center" },
-                            { HeaderText: "Subject", Width: 380, Name: "Subject", HeaderAlign: "center", CellAlign: "left" },
-                            { HeaderText: "Application", Width: 100, Name: "ApplicationName", HeaderAlign: "center", CellAlign: "center" },
-                            { HeaderText: "Mail To", Width: 250, Name: "MailTo", HeaderAlign: "center", CellAlign: "left" },
-                        //                            { HeaderText: "Mail Cc", Width: 100, Name: "MailCc", HeaderAlign: "center", CellAlign: "left" },
-                            {HeaderText: "Created Date<br/> (GMT -4)", Width: 130, Name: "CreatedDate", HeaderAlign: "center", CellAlign: "center" },
-                            { HeaderText: "Latest Send Date<br/> (GMT -4)", Width: 130, Name: "LatestSendDate", HeaderAlign: "center", CellAlign: "center" },
-                            { HeaderText: "Success", Width: 50, Name: "SendSuccess", HeaderAlign: "center", CellAlign: "center" },
-                            { HeaderText: "Fail", Width: 40, Name: "SendFail", HeaderAlign: "center", CellAlign: "center" },
-                            { HeaderText: "Resend", Width: 70, Name: "Resend", HeaderAlign: "center", CellAlign: "center" }
-                        ],
-                        bodyRows: bodyData,
-                        showPager: true,
-                        customPager: true,
-                        pagerOption: {
-                            itemsPerPage: pageSize,
-                            itemsPerPageArray: [50, 100, 500],
-                            currentPage: index - 1,
-                            totalItem: result.TotalRows,
-                            startPerPage: 50,
-                            pagerSelectCallBack: MailList.reRenderAfterPaged
-                        },
-                        gridExpandHeight: 260
-                    };
+						var linkViewDetail = value.Subject;
+						if (result.HasViewDetail === "1") {
+							linkViewDetail = "<a href='#' class='emailMessage' data-mailid='" + value.MailID + "'>" + value.Subject + "</a>";
+						}
 
-                    $("#gridId").fanexGrid(gridOption);
-                },
-                error: function (xhr, status, err) {
-                    NAP.handleAjaxError(xhr, status, err);
-                }
-            });
-        },
+						bodyData.push({
+							Columns:
+						[
+							{ Name: "No", Value: pageSize * (index - 1) + count++ },
+							{ Name: "Subject", Value: linkViewDetail },
+							{ Name: "ApplicationName", Value: '<span title="' + value.Config.Setting.SettingName + '">' + value.Config.AppName + '</span>' },
+							{ Name: "MailTo", Value: value.MailTo.split(',').join('<br/>') },
+							{Name: "CreatedDate", Value: value.MailDate },
+							{ Name: "LatestSendDate", Value: value.MailUpdatedDate },
+							{ Name: "SendSuccess", Value: value.SentSuccess },
+							{ Name: "SendFail", Value: linkSendFail },
+							{ Name: "Resend", Value: linkResend }
+						],
+							CssClass: value.SentSuccess === 0 ? "mailfail" : ""
+						});
+					});
 
-        reRenderAfterPaged: function (page_index, itemsPerPage, jq) {
-            MailList.generateData(itemsPerPage, page_index);
-        },
+					var gridOption = {
+						columns: [
+							{ HeaderText: "#", Width: 35, Name: "No", HeaderAlign: "center", CellAlign: "center" },
+							{ HeaderText: "Subject", Width: 380, Name: "Subject", HeaderAlign: "center", CellAlign: "left" },
+							{ HeaderText: "Application", Width: 100, Name: "ApplicationName", HeaderAlign: "center", CellAlign: "center" },
+							{ HeaderText: "Mail To", Width: 250, Name: "MailTo", HeaderAlign: "center", CellAlign: "left" },
+							{ HeaderText: "Created Date<br/> (GMT -4)", Width: 130, Name: "CreatedDate", HeaderAlign: "center", CellAlign: "center" },
+							{ HeaderText: "Latest Send Date<br/> (GMT -4)", Width: 130, Name: "LatestSendDate", HeaderAlign: "center", CellAlign: "center" },
+							{ HeaderText: "Success", Width: 50, Name: "SendSuccess", HeaderAlign: "center", CellAlign: "center" },
+							{ HeaderText: "Fail", Width: 40, Name: "SendFail", HeaderAlign: "center", CellAlign: "center" },
+							{ HeaderText: "Resend", Width: 70, Name: "Resend", HeaderAlign: "center", CellAlign: "center" }
+						],
+						bodyRows: bodyData,
+						showPager: true,
+						customPager: true,
+						pagerOption: {
+							itemsPerPage: pageSize,
+							itemsPerPageArray: [50, 100, 500],
+							currentPage: index - 1,
+							totalItem: result.TotalRows,
+							startPerPage: 50,
+							pagerSelectCallBack: MailList.reRenderAfterPaged
+						},
+						gridExpandHeight: 260
+					};
 
-        resend: function (mailId) {
-            $.ajax({
-                url: NAP.resolveClientUrl("Mail/ResendMail"),
-                data: { mailId: mailId },
-                type: 'POST',
-                dataType: 'html',
-                cache: false,
-                beforeSend: function () {
-                    NAP.loadingBox.show();
-                },
-                complete: function () {
-                    NAP.loadingBox.close();
-                },
-                success: function (result) {
-                    if (result) {
-                        NAP.headlineMsgBox.showInfo("Resend Success !", { closeBtn: false });
-                    }
-                    else {
-                        NAP.headlineMsgBox.showInfo("Resend Faild !", { closeBtn: false });
-                    }
+					$("#gridId").fanexGrid(gridOption);
+				},
+				error: function (xhr, status, err) {
+					NAP.handleAjaxError(xhr, status, err);
+				}
+			});
+		},
 
-                    window.location.href = window.location.href;
-                },
-                error: function (xhr, status, err) {
-                    NAP.handleAjaxError(xhr, status, err);
-                }
-            });
-        },
+		reRenderAfterPaged: function (pageIndex, itemsPerPage) {
+			MailList.generateData(itemsPerPage, pageIndex);
+		},
 
-        getMessage: function (mailId) {
-            $.ajax({
-                url: NAP.resolveClientUrl("Mail/GetMessage"),
-                data: { mailId: mailId },
-                type: 'POST',
-                dataType: 'html',
-                cache: false,
-                beforeSend: function () {
-                    NAP.loadingBox.show();
-                },
-                complete: function () {
-                    NAP.loadingBox.close();
-                },
-                success: function (result) {
-                    if (result.length > 0) {
-                        NAP.popup("Details", result);
-                    }
-                },
-                error: function (xhr, status, err) {
-                    NAP.handleAjaxError(xhr, status, err);
-                }
-            });
-        },
+		resend: function (mailId) {
+			$.ajax({
+				url: NAP.resolveClientUrl("Mail/ResendMail"),
+				data: { mailId: mailId },
+				type: 'POST',
+				dataType: 'html',
+				cache: false,
+				beforeSend: function () {
+					NAP.loadingBox.show();
+				},
+				complete: function () {
+					NAP.loadingBox.close();
+				},
+				success: function (result) {
+					if (result) {
+						NAP.headlineMsgBox.showInfo("Resend Success !", { closeBtn: false });
+					}
+					else {
+						NAP.headlineMsgBox.showInfo("Resend Faild !", { closeBtn: false });
+					}
 
-        getError: function (mailId) {
-            $.ajax({
-                url: NAP.resolveClientUrl("Mail/GetError"),
-                data: { mailId: mailId },
-                type: 'POST',
-                dataType: 'html',
-                cache: false,
-                beforeSend: function () {
-                    NAP.loadingBox.show();
-                },
-                complete: function () {
-                    NAP.loadingBox.close();
-                },
-                success: function (result) {
-                    if (result.length > 0) {
-                        NAP.popup("Details", result);
-                    }
-                },
-                error: function (xhr, status, err) {
-                    NAP.handleAjaxError(xhr, status, err);
-                }
-            });
-        }
-    };
+					window.location.href = window.location.href;
+				},
+				error: function (xhr, status, err) {
+					NAP.handleAjaxError(xhr, status, err);
+				}
+			});
+		},
 
-} (jQuery);
+		getMessage: function (mailId) {
+			$.ajax({
+				url: NAP.resolveClientUrl("Mail/GetMessage"),
+				data: { mailId: mailId },
+				type: 'POST',
+				dataType: 'html',
+				cache: false,
+				beforeSend: function () {
+					NAP.loadingBox.show();
+				},
+				complete: function () {
+					NAP.loadingBox.close();
+				},
+				success: function (result) {
+					if (result.length > 0) {
+						NAP.popup("Details", result);
+					}
+				},
+				error: function (xhr, status, err) {
+					NAP.handleAjaxError(xhr, status, err);
+				}
+			});
+		},
+
+		getError: function (mailId) {
+			$.ajax({
+				url: NAP.resolveClientUrl("Mail/GetError"),
+				data: { mailId: mailId },
+				type: 'POST',
+				dataType: 'html',
+				cache: false,
+				beforeSend: function () {
+					NAP.loadingBox.show();
+				},
+				complete: function () {
+					NAP.loadingBox.close();
+				},
+				success: function (result) {
+					if (result.length > 0) {
+						NAP.popup("Details", result);
+					}
+				},
+				error: function (xhr, status, err) {
+					NAP.handleAjaxError(xhr, status, err);
+				}
+			});
+		}
+	};
+
+} (jQuery));
 
 $(document).ready(function () {
 
-    $('.resendmail').live('click', function () {
-        if (confirm("Resend this email ?")) {
-            var mailId = $(this).attr("data-mailid");
-            MailList.resend(mailId);
-        }
-    });
+	$('.resendmail').live('click', function () {
+		if (confirm("Resend this email ?")) {
+			var mailId = $(this).attr("data-mailid");
+			MailList.resend(mailId);
+		}
+	});
 
-    $('.emailMessage').live('click', function () {
-        var mailId = $(this).attr("data-mailid");
-        MailList.getMessage(mailId);
-    });
+	$('.emailMessage').live('click', function () {
+		var mailId = $(this).attr("data-mailid");
+		MailList.getMessage(mailId);
+	});
 
-    $('.errormail').live('click', function () {
-        var mailId = $(this).attr("data-mailid");
-        MailList.getError(mailId);
-    });
+	$('.errormail').live('click', function () {
+		var mailId = $(this).attr("data-mailid");
+		MailList.getError(mailId);
+	});
 
-    MailList.generateData(50, 0);
+	MailList.generateData(50, 0);
 
-    $('#submit').live('click', function () {
-        MailList.generateData(50, 0);
-    });
+	$('#submit').live('click', function () {
+		MailList.generateData(50, 0);
+	});
 });

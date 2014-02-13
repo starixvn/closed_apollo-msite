@@ -1,14 +1,15 @@
+"use strict";
 
-var Layout = function ($) {
+var Layout = (function () {
 
-    return {
-        body: null
-    };
+	return {
+		body: null
+	};
 
-} (jQuery);
+} (jQuery));
 
 $(document).ready(function () {
-    Layout.body = $('body');
+	Layout.body = $('body');
 
-    setTimeout('Layout.body.fadeIn()', 200);
+	setTimeout(Layout.body.fadeIn, 200);
 });
