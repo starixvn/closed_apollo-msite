@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+    <Function Name="Log">
+        <Setting Key="Logging_Category_SelAll" SpName="ReadLog_AppLog_GetAllCategory" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_Sel_Padding" SpName="ReadLog_AppLog_GetLog" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_Del" SpName="RemoveLog_AppLog_Log" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_Monitor" SpName="UpdateLog_AppLog_MonitorLog" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_Machine_SelectAll" SpName="ReadLog_AppLog_GetAllMachine" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_Machine_ByType" SpName="ReadLog_AppLog_GetMachineByType" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_Machine_ById" SpName="ReadLog_AppLog_GetMachineByID" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_InsertMachine" SpName="WriteLog_AppLog_Category" DbName="SVRLOG.LogDB.aplweb"/>
+        <Setting Key="Logging_UpdateMachine" SpName="UpdateLog_AppLog_Machine" DbName="SVRLOG.LogDB.aplweb"/>
+    </Function>
+</Functions>

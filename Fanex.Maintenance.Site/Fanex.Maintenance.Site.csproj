@@ -145,10 +145,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="App_Data\mSiteSpNames.xml">
+    <Content Include="App_Data\local\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\NAPCommonSpNames.xml" />
+    <Content Include="App_Data\local\NAPCommonSpNames.xml" />
+    <Content Include="App_Data\prod\mSiteSpNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\prod\NAPCommonSpNames.xml" />
+    <Content Include="App_Data\uat\mSiteSpNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\uat\NAPCommonSpNames.xml" />
     <Content Include="Areas\UserLogin\scripts\lib\jquery-1.8.0.min.js" />
     <Content Include="Areas\UserLogin\scripts\Plugin\jquery-1.6.2.js" />
     <Content Include="Areas\UserLogin\scripts\ReCheckIn.js" />
@@ -1473,6 +1481,27 @@
     <Content Include="Areas\UserLogin\Views\Web.config" />
     <Content Include="Areas\UserLogin\Views\SSO\SSOIndex.cshtml" />
     <Content Include="Areas\UserLogin\Views\Common\Offline.cshtml" />
+    <Content Include="Web.local.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.uat.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.prod.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebConnectionString.local.config">
+      <SubType>Designer</SubType>
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
+    <Content Include="WebConnectionString.prod.config">
+      <SubType>Designer</SubType>
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
+    <Content Include="WebConnectionString.uat.config">
+      <SubType>Designer</SubType>
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
     <None Include="scripts\Plugin\bootstrap-multiselect\less\bootstrap-multiselect.less" />
     <None Include="scripts\Plugin\bootstrap-multiselect\README.md" />
     <None Include="scripts\Plugin\jquery-ui-1.8.23.custom\development-bundle\demos\autocomplete\search.php" />
